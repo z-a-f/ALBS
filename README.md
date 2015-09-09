@@ -34,7 +34,7 @@ cd build
 make
 ```
 
-## Acknoledgements
+## Acknowledgements
 * This file is based on the ALBS Template by __Christopher Batten__ - for details please refer to the original [README file](README).
 * The table of contents is generated with [DocToc](https://github.com/thlorenz/doctoc)
 
