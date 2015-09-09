@@ -1,0 +1,33 @@
+#=========================================================================
+# Build directory; Cache; Configure; etc.
+#=========================================================================
+# We explicitly ignore a default build directory and the autoconf
+# generated autom4te.cache directory. This makes it easy to do a clean
+# build under the source directory and still have it appear clean to git.
+
+build/*
+autom4te.cache/
+!build/.gitkeep
+
+#=========================================================================
+# Regeneratable files
+#=========================================================================
+
+configure
+*.pdf
+
+#=========================================================================
+# Temporary files
+#=========================================================================
+# Files temporary created by your favorite editor should not be in the git
+
+\#*
+*~
+.*~
+*.bak
+
+#=========================================================================
+# Exclusion zone
+#=========================================================================
+!images
+!images/*

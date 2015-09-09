@@ -1,0 +1,6 @@
+
+ <svg>
+   <circle cx='0'  cy='0' r='40' style='fill: red'  />
+   <circle cx='30' cy='0' r='40' style='fill: blue' />
+ </svg>
+

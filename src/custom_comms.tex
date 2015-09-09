@@ -1,0 +1,164 @@
+\usepackage{listings} % coding environment (used to show verilog codes)
+
+% Put custom commands here
+
+\makeatletter
+% ==========================================
+% Define custom commands:
+
+% This is a Zebra code listing (creates neat ``zebra''-like
+% lines with numberings. You can define your own colors
+% (modify the code_params.tex)
+\newcommand\realnumberstyle[1]{#1}
+\newcommand{\zebra}[3]{%
+  {\realnumberstyle{#3}}%
+  \begingroup
+    \lst@basicstyle
+    \ifodd\value{lstnumber}%
+        \color{#1}%
+    \else
+        \color{#2}%
+    \fi
+    \rlap{%
+        \hspace*{\lst@numbersep}%
+        \color@block{\linewidth}{\ht\strutbox}{\dp\strutbox}%
+    }%
+  \endgroup
+}
+
+% This one is for making spaces around the wrapfigures
+% sometimes when the text is short, the wrapfigure will
+% try to make everything after itself change its size.
+% use \makespace to fix it
+\newcommand{\makespace} {
+  \par
+  \loop
+  \ifnum\c@WF@wrappedlines > 1
+  \hspace*{1sp}\newline
+  \advance\c@WF@wrappedlines by -1
+  \repeat
+  \par
+}
+
+
+%-------------------------------------------------------------------------
+% Extra definitions
+%-------------------------------------------------------------------------
+% If you would like to get rid of some text, but still have it for future:
+% Just put the text that you would like to hide into \ignore{your text}
+\def\ignore#1{}
+% \newcommand{\ignore}[1]{}
+
+% This is a fixme request. In case of collaboration, this thing will emphasize
+% the text and put a FIXME: keyword
+% \newcommand{\fixme}[1] {
+%  \textbf{\textcolor{red}{[ FIXME: #1 ]}}
+% }
+\newcommand{\fixme}[1] {
+  \todo[backgroundcolor=red!50!white,inline,author=FIXME]{#1}
+}
+
+% These are the todo requests
+\newcommand{\noteforme}[1] {
+  \textbf{\textcolor{blue}{[ NOTE FOR MYSELF: #1 ]}}
+}
+\newcommand{\todoBlue}[1] {
+  \todo[backgroundcolor=blue!20!white,inline,author=TODO]{#1}
+}
+\newcommand{\todoRed}[1] {
+  \todo[backgroundcolor=red!20!white,inline,author=TODO]{#1}
+}
+\newcommand{\todoGreen}[1] {
+  \todo[backgroundcolor=green!20!white,inline,author=TODO]{#1}
+}
+\newcommand{\todoYellow}[1] {
+  \todo[backgroundcolor=yellow!20!white,inline,author=TODO]{#1}
+}
+
+% Create tabs
+\newcommand{\tab} {
+  \hspace{.02\textwidth}
+}
+
+% End of commands definition
+% ==========================================
+\makeatother
+
+% ==========================================
+% Define code styles:
+
+% Before defining the verilog code listing, let's fix the referencing
+% Use matchrangestart=t as an argument to the lslisting to enable
+\makeatletter
+\lst@Key{matchrangestart}{f}{\lstKV@SetIf{#1}\lst@ifmatchrangestart} % Define matchrangestart
+% Add matchrangestart test to the SkipToFirst:
+\def\lst@SkipToFirst{%
+    \lst@ifmatchrangestart\c@lstnumber=\numexpr-1+\lst@firstline\fi
+    \ifnum \lst@lineno<\lst@firstline
+           \def\lst@next{%
+                \lst@BeginDropInput\lst@Pmode
+                \lst@Let{13}\lst@MSkipToFirst
+                \lst@Let{10}\lst@MSkipToFirst}%
+           \expandafter\lst@next
+    \else
+        \expandafter\lst@BOLGobble
+    \fi}%
+\makeatother
+
+% Verilog styling with Zebra
+\lstdefinestyle{custom_verilog}{
+  basicstyle=\footnotesize\ttfamily,
+  belowcaptionskip=0.1\baselineskip,
+  breaklines=true,
+  captionpos=t,
+  commentstyle=\color{green!60!black},
+  deletekeywords={...},
+  % Note that @ sign is better to use as an escape character
+  % but in Verilog it is already reserved:
+  escapeinside={^}{^},
+  frame=L,
+  identifierstyle=\color{black},
+  keywordstyle=\bfseries\color{blue},
+  language=Verilog,
+  morecomment={
+    [s][\color{red}]{/*!}{*}
+  },
+  morekeywords={
+    *,
+    % Data type definitions:
+    bit,
+    electrical,
+    logic,
+    longint,
+    shortint,
+    shortreal,
+    typedef,
+    wreal,
+    ...,
+    % extra constructs:
+    interface,
+    endinterface,
+    exclude,
+    from,
+    ...,
+    % blocks:
+    analog,
+    ...},
+  numbers=left,
+  numberstyle=\zebra{gray!20}{white}, % Don't forget to declare ZEBRA command
+  showstringspaces=false,
+  stepnumber=1,
+  stringstyle=\color{orange},
+  tabsize=2,
+  % title=\lstname,
+  xleftmargin=\parindent,
+}
+
+%%
+% Change some of the code params:
+\renewcommand{\lstlistingname}{Code Listing} % Change the listing caption
+\lstset{style=custom_verilog} % By default assume all codes are verilog type
+
+
+% End of code styles
+% ==========================================

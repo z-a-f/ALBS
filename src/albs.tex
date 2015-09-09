@@ -1,0 +1,67 @@
+%=========================================================================
+% LaTeX Document
+%=========================================================================
+
+% \documentclass[12pt]{report}          % Single-sided printing for thelibrary
+% \documentclass[12pt,twoside]{report} % Double-sided printing
+\documentclass[12pt]{report}    % Put final to get rid of comments
+% \documentclass[12pt]{article}    % Put final to get rid of comments
+
+%-------------------------------------------------------------------------
+% Packages
+%-------------------------------------------------------------------------
+%% \RequirePackage{tikz}
+
+%% \usepackage{amssymb}
+%% \usepackage[toc,page]{appendix}
+%% \usepackage{booktabs}
+%% \usepackage{bu_ece_thesis}
+%% \usepackage{caption}
+% \usepackage[noadjust]{cite}
+\usepackage[margin=1in]{geometry}
+%% \usepackage{graphicx}
+% \usepackage{hyperref}
+%% \usepackage{listings} % coding environment (used to show verilog codes)
+%% \usepackage[pdftex]{lscape}
+%% \usepackage{pgfgantt}
+%% \usepackage{mathtools}
+%% \usepackage[sort&compress]{natbib}
+%% % \usepackage{prospectus}
+%% \usepackage{subcaption}
+%% % \usepackage{subequations}
+%% \usepackage{tabularx}
+%% \usepackage[obeyFinal,colorinlistoftodos,shadow]{todonotes} % Put disable for final version
+%% \usepackage{xcolor}
+%% \usepackage{url}
+
+% Automatix LaTeX build system modules
+\usepackage{svg}
+\usepackage{mat}
+\usepackage{dot}
+
+
+\input{custom_comms}          % Special file with custom commands defined
+%-------------------------------------------------------------------------
+% Special Paths
+%-------------------------------------------------------------------------
+% \graphicspath{{../images/}{../prebuild/}{2_Body/Figures/}}
+
+%=========================================================================
+% Document
+%=========================================================================
+\begin{document}
+% Front matter
+This is a TEMPLATE
+
+% Back matter
+
+% \bibliographystyle{plain}
+\bibliographystyle{unsrt}
+\bibliography{albs}
+
+% Other stuff
+%% \begin{appendices}
+%%   And this is an appendix
+%% \end{appendices}
+
+\end{document}

@@ -1,0 +1,16 @@
+
+DOT		= @dot@
+PDFCROP		= @pdfcrop@
+
+dot_enabled	= @dot_enabled@
+dot_figs	= $(filter %.dot.pdf, $(figs))
+dot_prebuild	= $(dot_figs)
+
+ifeq ($(dot_enabled),yes)
+$(dot_figs) : %.dot.pdf : %.dot
+	$(DOT) -Tpdf $< -o $@
+	$(PDFCROP) $*.dot.pdf $*.dot.pdf
+endif
+
+junk += $(dot_figs)
+
