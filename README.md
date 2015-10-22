@@ -19,7 +19,7 @@ using.
 For detailed setup guide, please, refer to [albs-uguide.md](albs-uguide.md).
 
  - Update the project metadata (name, version, etc) in [configure.ac](configure.ac)
- - Run `autoconf` in project's root directory
+ - **Run `autoconf` in project's root directory**
  - Rename [src/albs.tex](src/albs.tex) to abbreviated form of project name (with .tex)
  - Rename [src/albs.bib](src/albs.bib) to abbreviated form of project name (with .bib)
  - Change `\bibliography{}` in the toplevel .tex file appropriately
